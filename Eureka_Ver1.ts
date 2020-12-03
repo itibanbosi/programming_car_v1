@@ -417,7 +417,7 @@ namespace eureka_blocks_car {
   }
 
   //% color="#009A00" weight=20 block="きょりが |%limit| cmより |%nagasa| " group="4　センサー"
-  //% limit.min=0 limit.max=50
+  //% limit.min=0 limit.max=30
   export function sonar_ping_3(limit: number ,nagasa:kyori): boolean {
     let  d1=0;
     let  d2=0;
