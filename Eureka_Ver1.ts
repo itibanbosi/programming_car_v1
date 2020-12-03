@@ -454,7 +454,7 @@ namespace eureka_blocks_car {
     }
   }
 
-  //% color="#ff3d03" weight=12 blockId=auto_led_off block="ﾏｲｸﾛﾋﾞｯﾄのLEDを |%Matrix_LED| にする" group="5　ライト"
+  //% color="#ff3d03" weight=12 blockId=auto_led_off block="ﾏｲｸﾛﾋﾞｯﾄのLEDを |%Matrix_LED| にする"group=" group="1_初期設定"
   export function auto_led_off(Matrix_LED:car_LED_onoff) {
     switch(Matrix_LED){
         case car_LED_onoff.無効:
