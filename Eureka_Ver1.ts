@@ -29,8 +29,8 @@ enum lotation{
     右,
 }
 enum car_LED_onoff{
-    有効,
     無効,
+    有効,
 }
 
 enum kyori{
