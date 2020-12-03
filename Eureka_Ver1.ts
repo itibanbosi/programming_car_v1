@@ -418,12 +418,11 @@ namespace eureka_blocks_car {
 
   //% color="#009A00" weight=20 block="きょりが |%limit| cmより |%nagasa| " group="4　センサー"
   //% limit.min=0 limit.max=50
-  export function sonar_ping_3(sonar_quality:sonar_avg,limit: number ,nagasa:kyori): boolean {
-    sonar_quality=10
+  export function sonar_ping_3(limit: number ,nagasa:kyori): boolean {
     let  d1=0;
     let  d2=0;
 
-    for ( let i=0 ; i<sonar_quality ; i++ ){
+    for ( let i=0 ; i<10 ; i++ ){
     // send
     basic.pause(5);
     pins.setPull(DigitalPin.P16, PinPullMode.PullNone);
@@ -438,14 +437,14 @@ namespace eureka_blocks_car {
     }
     switch(nagasa){
         case kyori.短い:
-        if (Math.idiv(d2/sonar_quality, 58) * 1.5 < limit) {
+        if (Math.idiv(d2/10, 58) * 1.5 < limit) {
         return true;
         } else {
         return false;
         }
         break;
         case kyori.長い:
-        if (Math.idiv(d2/sonar_quality, 58) * 1.5 < limit) {
+        if (Math.idiv(d2/10, 58) * 1.5 < limit) {
         return false;
         } else {
         return true;
