@@ -21,7 +21,7 @@ enum direction{
     右前,
     左前,
     止まる,
-    ニュートラル,
+    しっかり止まる,
 }
 
 enum lotation{
@@ -117,7 +117,7 @@ namespace eureka_blocks_car {
             pins.servoWritePin(AnalogPin.P13, 90);
             pins.servoWritePin(AnalogPin.P14, 90);
         break;
-        case direction.ニュートラル:
+        case direction.しっかり止まる:
             pins.digitalWritePin(DigitalPin.P13, 0);
             pins.digitalWritePin(DigitalPin.P14, 0);
         break;
@@ -208,7 +208,7 @@ namespace eureka_blocks_car {
     }
   }
 
-//% color="#6041f1"  weight=23 block="右だけが |%wb| をふんだ時 |%sikii| " group="3　センサー" group="4　センサー"
+//% color="#6041f1"  weight=23 block="右だけが |%wb| をふんだ時 しきい値 |%sikii| " group="3　センサー" group="4　センサー"
 //% sence.min=10 sence.max=40
   export function photo_R_out( wb: whiteblack,sikii:sence_select): boolean {
 　  if (sikii==sence_select.低感度)
@@ -315,17 +315,9 @@ namespace eureka_blocks_car {
 }
 
 
-  //% color="#009A00" weight=22 blockId=sonar_ping_2 block="きょりｾﾝｻ |%sonar_quality|" group="4　センサー"
+  //% color="#009A00" weight=22 blockId=sonar_ping_2 block="きょりｾﾝｻ" group="4　センサー"
   export function ping(sonar_quality:sonar_avg) :number{
-        if (sonar_quality　==sonar_avg.低速高精度){
-            sonar_quality=20
-        }
-        if (sonar_quality==sonar_avg.中速中精度){
-            sonar_quality=5
-        }        
-        if (sonar_quality==sonar_avg.高速低精度){
-            sonar_quality=1
-        }
+    sonar_quality=10
     let  d1=0;
     let  d2=0;
 
@@ -348,15 +340,7 @@ namespace eureka_blocks_car {
   //% color="#009A00" weight=20 block="|%sonar_quality| 　きょりが |%limit| cmより |%nagasa| " group="4　センサー"
   //% limit.min=0 limit.max=50
   export function sonar_ping_3(sonar_quality:sonar_avg,limit: number ,nagasa:kyori): boolean {
-        if (sonar_quality　==sonar_avg.低速高精度){
-            sonar_quality=20
-        }
-        if (sonar_quality==sonar_avg.中速中精度){
-            sonar_quality=5
-        }        
-        if (sonar_quality==sonar_avg.高速低精度){
-            sonar_quality=1
-        }
+    sonar_quality=10
     let  d1=0;
     let  d2=0;
 
