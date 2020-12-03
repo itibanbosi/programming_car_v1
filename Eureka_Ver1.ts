@@ -47,7 +47,7 @@ let con_le = 0;
 let con_op = 0;
 
 
-//% color="#3943c6" block="ﾕｰﾚｶ･ｶｰVer0.92" icon="\uf1b9"
+//% color="#3943c6" block="ﾕｰﾚｶ･ｶｰVer1.0" icon="\uf1b9"
 
 namespace eureka_blocks_car {
 /*
