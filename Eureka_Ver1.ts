@@ -65,8 +65,8 @@ namespace eureka_blocks_car {
   }
 
   //% color="#ffa800" weight=97　blockId=servos_op
-  //% block="出力調整 |%op|" group="1　調整"
-  //% op.min=-100 op.max=0
+  //% block="スピード調整 |%op|" group="1　調整"
+  //% op.min=-75 op.max=0
   export function servo_op(op: number): void {
     con_op = op;
   }
