@@ -126,6 +126,84 @@ namespace eureka_blocks_car {
   }    
   
 
+
+
+  //% color="#3943c6" weight=70　blockId=servos_direction
+  //% block="進行方向 |%sinkou_houkou| 動作時間|%time_sec| " group="2　基本の動き"
+  export function car_derection_time(sinkou_houkou:direction ,time_sec:number ): void {
+    switch(sinkou_houkou){
+        case direction.前:
+            if (con_le >= 0) {
+            pins.servoWritePin(AnalogPin.P14,90 - (90 * (con_op + 100)) / 100 + con_le);
+            pins.servoWritePin(AnalogPin.P13, 90 + (90 * (con_op + 100)) / 100);
+            }
+            if (con_le < 0) {
+            pins.servoWritePin(AnalogPin.P14, 90 - (90 * (con_op + 100)) / 100);
+            pins.servoWritePin(AnalogPin.P13, 90 + (90 * (con_op + 100)) / 100 + con_le);
+            }        
+            basic.pause(time_sec * 1000);        
+            pins.servoWritePin(AnalogPin.P13, 90);
+            pins.servoWritePin(AnalogPin.P14, 90);
+        break;
+        case direction.後:
+            if (con_le >= 0) {
+            pins.servoWritePin( AnalogPin.P14,90 + (90 * (con_op + 100)) / 100 - con_le );
+            pins.servoWritePin(AnalogPin.P13, 90 - (90 * (con_op + 100)) / 100);
+            }
+            if (con_le < 0) {
+            pins.servoWritePin(AnalogPin.P14, 90 + (90 * (con_op + 100)) / 100);
+            pins.servoWritePin(AnalogPin.P13, 90 - (90 * (con_op + 100)) / 100 - con_le );
+            }
+            basic.pause(time_sec * 1000);        
+            pins.servoWritePin(AnalogPin.P13, 90);
+            pins.servoWritePin(AnalogPin.P14, 90); 
+        break;            
+        case direction.左:
+            pins.servoWritePin(AnalogPin.P14,90 - (90 * (con_op + 100)) / 100 );
+            pins.servoWritePin(AnalogPin.P13, 90 );
+            basic.pause(time_sec * 1000);        
+            pins.servoWritePin(AnalogPin.P13, 90);
+            pins.servoWritePin(AnalogPin.P14, 90);
+        break;
+        case direction.右:
+            pins.servoWritePin(AnalogPin.P14,90 );
+            pins.servoWritePin(AnalogPin.P13, 90 + (90 * (con_op + 100)) / 100 );
+            basic.pause(time_sec * 1000);        
+            pins.servoWritePin(AnalogPin.P13, 90);
+            pins.servoWritePin(AnalogPin.P14, 90);
+        break;
+        case direction.左前:
+            pins.servoWritePin(AnalogPin.P14,60 );
+            pins.servoWritePin(AnalogPin.P13, 100);
+            basic.pause(time_sec * 1000);        
+            pins.servoWritePin(AnalogPin.P13, 90);
+            pins.servoWritePin(AnalogPin.P14, 90);
+        break;
+        case direction.右前:
+            pins.servoWritePin(AnalogPin.P14,80);
+            pins.servoWritePin(AnalogPin.P13, 120);
+            basic.pause(time_sec * 1000);        
+            pins.servoWritePin(AnalogPin.P13, 90);
+            pins.servoWritePin(AnalogPin.P14, 90);
+        break;
+        case direction.止まる:
+            pins.servoWritePin(AnalogPin.P13, 90);
+            pins.servoWritePin(AnalogPin.P14, 90);
+            basic.pause(time_sec * 1000);        
+            pins.servoWritePin(AnalogPin.P13, 90);
+            pins.servoWritePin(AnalogPin.P14, 90);
+        break;
+        case direction.しっかり止まる:
+            pins.digitalWritePin(DigitalPin.P13, 0);
+            pins.digitalWritePin(DigitalPin.P14, 0);
+            basic.pause(time_sec * 1000);        
+            pins.servoWritePin(AnalogPin.P13, 90);
+            pins.servoWritePin(AnalogPin.P14, 90);
+        break;
+    }
+  }    
+  
+
   
   //% color="#3943c6" weight=63blockId=servos_lotation
   //% block="回転 |%lot_houkou| " group="2　基本の動き"
