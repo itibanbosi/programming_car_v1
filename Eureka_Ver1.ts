@@ -416,7 +416,7 @@ namespace eureka_blocks_car {
     return Math.round(Math.idiv(d2/sonar_quality, 58) * 1.5) ;
   }
 
-  //% color="#009A00" weight=20 block="|%sonar_quality| 　きょりが |%limit| cmより |%nagasa| " group="4　センサー"
+  //% color="#009A00" weight=20 block="きょりが |%limit| cmより |%nagasa| " group="4　センサー"
   //% limit.min=0 limit.max=50
   export function sonar_ping_3(sonar_quality:sonar_avg,limit: number ,nagasa:kyori): boolean {
     sonar_quality=10
