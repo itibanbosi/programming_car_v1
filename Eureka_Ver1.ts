@@ -459,16 +459,30 @@ namespace eureka_blocks_car {
     }
   }
 
-  //% color="#009A00"  weight=80 block="光ｾﾝｻ値が |%limit| より |%light_sel| " group="4　センサー"
+
+  //% color="#009A00"  weight=80 blockId=light_limit block="光ｾﾝｻ値が |%limit| より |%l_sel| " group="4　センサー"
   //% limit.min=0 limit.max=100
-  export function decideLight(limit: number,light_sel:light_sensor): boolean {
+   export function light_limit( limit: number , l_sel:light_sensor): boolean{
+    switch(l_sel) {
+        case light_sensor.暗い:
         led.enable(false);
         if ((pins.analogReadPin(AnalogPin.P4) / 1023) * 100 < limit) {
           return true;
+            } else {
+          return false;
+            }
+        break;
+
+        case light_sensor.明るい:
+        led.enable(false);
+        if ((pins.analogReadPin(AnalogPin.P4) / 1023) * 100 >= limit) {
+          return true;
         } else {
           return false;
+            }       
+        break;
         }
-    }
+   }
 
   //% color="#009A00"  weight=81 blockId=eureka_light block="光ｾﾝｻの値を調べる" group="4　センサー"
   export function eureka_light() {
