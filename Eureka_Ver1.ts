@@ -274,7 +274,7 @@ namespace eureka_blocks_car {
 
   //% color="#1E90FF" weight=51 blockId=wait_time1
   //% block="待ち時間 |%second| （秒) " group="2　基本の動き"
-  export function wait_time1(second: wait_time): void {
+  export function wait_time1(second: number): void {
     basic.pause(second*1000);
   }
 
