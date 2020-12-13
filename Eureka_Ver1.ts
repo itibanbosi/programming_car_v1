@@ -466,15 +466,13 @@ namespace eureka_blocks_car {
         }
     }
 
-  //% color="#009A00"  weight=81 blockId=eureka_denkitemp block="光ｾﾝｻ値" group="4　センサー"
-  export function eureka_denkitemp(): number {
+  //% color="#009A00"  weight=81 blockId=eureka_light block="光ｾﾝｻ値" group="4　センサー"
+  export function eureka_light() {
         led.enable(false);
-        return Math.round((pins.analogReadPin(AnalogPin.P4) / 1023) * 100);
-
-  }
-
-
-
+        let light = Math.round((pins.analogReadPin(AnalogPin.P4) / 1023) * 100);
+        led.enable(true);
+        basic.showNumber(light);
+    }
 
   //% color="#ff3d03" weight=12 blockId=auto_led_off block="ﾏｲｸﾛﾋﾞｯﾄのLEDを |%Matrix_LED| にする"group="5　ライト"
   export function auto_led_off(Matrix_LED:car_LED_onoff) {
