@@ -491,6 +491,7 @@ namespace eureka_blocks_car {
   export function eureka_denkitemp(): number {
         led.enable(false);
         return Math.round((pins.analogReadPin(AnalogPin.P4) / 1023) * 100);
+
   }
 
 
