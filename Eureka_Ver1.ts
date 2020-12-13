@@ -272,11 +272,20 @@ namespace eureka_blocks_car {
     }
   }
 
-  //% color="#1E90FF" weight=51 block="待ち時間 |%second| （秒）小数は直接入力" group="2　基本の動き"
+  //% color="#1E90FF" weight=51 blockId=wait_time1
+  //% block="待ち時間 |%second| （秒）小数は直接入力" group="2　基本の動き"
   export function driveForwards(second: wait_time): void {
-    basic.pause(second * 500);
+    basic.pause(second*1000);
   }
 
+/**
+ * @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
+ */
+//% color="#1E90FF" weight=51 blockId=wait_time2
+//* block="待ち時間2 |%second| （秒）小数は直接入力" group="2　基本の動き"
+function pause(ms: number): void {
+    basic.pause(ms*1000);
+}
 
 
   //% color="#f071bd" weight=30 blockId=auto_photo_R block="右ﾌｫﾄﾘﾌﾚｸﾀｰ" group="3　センサー"
