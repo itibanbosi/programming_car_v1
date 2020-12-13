@@ -43,6 +43,29 @@ enum sonar_avg{
   高速低精度,
 }
 
+enum wait_time {
+    //% block="えらぶ",
+    zero,
+    //% block="0.1",
+    dot_two,
+    //% block="0.3",
+    dot_three,
+    //% block="0.5",
+    dot_five,
+    //% block="0.8",
+    dot_eight,
+    //% block="1",
+    one,
+    //% block="2",
+    two,
+    //% block="3",
+    three,
+    //% block="5",
+    five,
+    //% block="10",
+    ten,
+    }
+
 let con_le = 0;
 let con_op = 0;
 
@@ -250,8 +273,7 @@ namespace eureka_blocks_car {
   }
 
   //% color="#1E90FF" weight=51 block="待ち時間 |%second| （秒）小数は直接入力" group="2　基本の動き"
-  //% second.min=0 second.max=10
-  export function driveForwards(second: number): void {
+  export function driveForwards(second: wait_time): void {
     basic.pause(second * 1000);
   }
 
@@ -457,7 +479,7 @@ namespace eureka_blocks_car {
   //% limit.min=0 limit.max=100
   export function decideLight(limit: number): boolean {
         led.enable(false);
-        if ((pins.analogReadPin(AnalogPin.P0) / 1023) * 100 < limit) {
+        if ((pins.analogReadPin(AnalogPin.P4) / 1023) * 100 < limit) {
           return true;
         } else {
           return false;
@@ -467,7 +489,7 @@ namespace eureka_blocks_car {
   //% color="#009A00"  weight=81 blockId=eureka_denkitemp block="光ｾﾝｻ値" group="4　センサー"
   export function eureka_denkitemp(): number {
         led.enable(false);
-        return Math.round((pins.analogReadPin(AnalogPin.P0) / 1023) * 100);
+        return Math.round((pins.analogReadPin(AnalogPin.P4) / 1023) * 100);
   }
 
 
