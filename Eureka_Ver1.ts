@@ -282,7 +282,7 @@ namespace eureka_blocks_car {
  * @param ms how long to pause for, eg: 100, 200, 500, 1000, 2000
  */
 //% color="#1E90FF" weight=51 blockId=wait_time2
-//* block="待ち時間2 |%second| （秒）小数は直接入力" group="2　基本の動き"
+//* block="待ち時間2 |%ms| （秒）小数は直接入力" group="2　基本の動き"
 function pause(ms: number): void {
     basic.pause(ms*1000);
 }
