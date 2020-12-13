@@ -43,28 +43,7 @@ enum sonar_avg{
   高速低精度,
 }
 
-enum wait_time {
-    //% block="えらぶ",
-    zero,
-    //% block="0.1",
-    dot_two,
-    //% block="0.3",
-    dot_three,
-    //% block="0.5",
-    dot_five,
-    //% block="0.8",
-    dot_eight,
-    //% block="1",
-    one,
-    //% block="2",
-    two,
-    //% block="3",
-    three,
-    //% block="5",
-    five,
-    //% block="10",
-    ten,
-    }
+
 
 let con_le = 0;
 let con_op = 0;
@@ -89,7 +68,7 @@ namespace eureka_blocks_car {
 
   //% color="#ffa800" weight=97　blockId=servos_op
   //% block="スピード調整 |%op|" group="1　調整"
-  //% op.min=-90 op.max=0
+  //% op.min=-95 op.max=0
   export function servo_op(op: number): void {
     con_op = op;
   }
@@ -152,7 +131,7 @@ namespace eureka_blocks_car {
 
 
   //% color="#3943c6" weight=70　blockId=servos_direction
-  //% block="進行方向 |%sinkou_houkou| 動作時間|%time_sec| " group="2　基本の動き"
+  //% block="進行方向 |%sinkou_houkou| 動作時間|%time_sec| 秒" group="2　基本の動き"
   export function car_derection_time(sinkou_houkou:direction ,time_sec:number ): void {
     switch(sinkou_houkou){
         case direction.前:
