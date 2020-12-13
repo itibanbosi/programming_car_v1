@@ -47,7 +47,7 @@ let con_le = 0;
 let con_op = 0;
 
 
-//% color="#3943c6" block="ﾕｰﾚｶ･ｶｰVer1.0" icon="\uf1b9"
+//% color="#3943c6" block="ﾕｰﾚｶ･ｶｰVer1.1" icon="\uf1b9"
 
 namespace eureka_blocks_car {
 /*
@@ -452,6 +452,26 @@ namespace eureka_blocks_car {
         break;        
     }
   }
+
+  //% color="#009A00"  weight=80 block="光ｾﾝｻ値 |%limit| より暗い " group="4　センサー"
+  //% limit.min=0 limit.max=100
+  export function decideLight(limit: number): boolean {
+        led.enable(false);
+        if ((pins.analogReadPin(AnalogPin.P0) / 1023) * 100 < limit) {
+          return true;
+        } else {
+          return false;
+        }
+    }
+
+  //% color="#009A00"  weight=81 blockId=eureka_denkitemp block="光ｾﾝｻ値" group="4　センサー"
+  export function eureka_denkitemp(): number {
+        led.enable(false);
+        return Math.round((pins.analogReadPin(AnalogPin.P0) / 1023) * 100);
+  }
+
+
+
 
   //% color="#ff3d03" weight=12 blockId=auto_led_off block="ﾏｲｸﾛﾋﾞｯﾄのLEDを |%Matrix_LED| にする"group="5　ライト"
   export function auto_led_off(Matrix_LED:car_LED_onoff) {
