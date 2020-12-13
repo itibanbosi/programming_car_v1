@@ -274,7 +274,7 @@ namespace eureka_blocks_car {
 
   //% color="#1E90FF" weight=51 block="待ち時間 |%second| （秒）小数は直接入力" group="2　基本の動き"
   export function driveForwards(second: wait_time): void {
-    basic.pause(second * 1000);
+    basic.pause(second * 500);
   }
 
 
