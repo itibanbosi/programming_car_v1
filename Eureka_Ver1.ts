@@ -263,17 +263,17 @@ namespace eureka_blocks_car {
 
 
 
-  //% color="#f071bd" weight=30 blockId=auto_photo_R block="右ﾌｫﾄﾘﾌﾚｸﾀｰ" group="3　センサー"
+  //% color="#f071bd" weight=30 blockId=auto_photo_R block="右ﾌｫﾄﾘﾌﾚｸﾀｰ" group="4 ﾌｫﾄﾘﾌﾚｸﾀｰ"
   export function phto_R() {
     return Math.round((pins.analogReadPin(AnalogPin.P2) / 1023) * 100);
   }
 
-  //% color="#f071bd" weight=28 blockId=auto_photo_L block="左ﾌｫﾄﾘﾌﾚｸﾀｰ" group="3　センサー"
+  //% color="#f071bd" weight=28 blockId=auto_photo_L block="左ﾌｫﾄﾘﾌﾚｸﾀｰ" group="4 ﾌｫﾄﾘﾌﾚｸﾀｰ"
   export function phto_L() {
     return Math.round((pins.analogReadPin(AnalogPin.P1) / 1023) * 100);
   }
 
-  //% color="#d4b41f"  weight=26 block="右ﾌｫﾄﾘｸﾚｸﾀｰ値 |%limit_R| より小さい" group="3　センサー"
+  //% color="#d4b41f"  weight=26 block="右ﾌｫﾄﾘｸﾚｸﾀｰ値 |%limit_R| より小さい" group="4 ﾌｫﾄﾘﾌﾚｸﾀｰ"
   //% limit_R.min=0 limit_R.max=100
   export function photo_R(limit_R: number): boolean {
     if ((pins.analogReadPin(AnalogPin.P2) / 1023) * 100 < limit_R) {
@@ -283,7 +283,7 @@ namespace eureka_blocks_car {
     }
   }
 
-  //% color="#d4b41f"  weight=27 block="左ﾌｫﾄﾘｸﾚｸﾀｰ値 |%limit_L| より小さい" group="3　センサー"
+  //% color="#d4b41f"  weight=27 block="左ﾌｫﾄﾘｸﾚｸﾀｰ値 |%limit_L| より小さい" group="4 ﾌｫﾄﾘﾌﾚｸﾀｰ"
   //% limit_L.min=0 limit_L.max=100
   export function photo_L(limit_L: number): boolean {
     if ((pins.analogReadPin(AnalogPin.P1) / 1023) * 100 < limit_L) {
@@ -293,7 +293,7 @@ namespace eureka_blocks_car {
     }
   }
 
-//% color="#6041f1"  weight=23 block="右だけが |%wb| をふんだ時 しきい値 |%sikii| " group="4　センサー" group="4　センサー"
+//% color="#6041f1"  weight=23 block="右だけが |%wb| をふんだ時 しきい値 |%sikii| " group="4　センサー" group="4 ﾌｫﾄﾘﾌﾚｸﾀｰ"
 //% sence.min=10 sence.max=40
   export function photo_R_out( wb: whiteblack,sikii:sence_select): boolean {
 　  if (sikii==sence_select.低感度)
@@ -326,7 +326,7 @@ namespace eureka_blocks_car {
     }
   }
 
-  //% color="#6041f1"  weight=24 block="左だけが |%wb| をふんだ時 しきい値 |%sikii| " group="4　センサー" 
+  //% color="#6041f1"  weight=24 block="左だけが |%wb| をふんだ時 しきい値 |%sikii| " group="4 ﾌｫﾄﾘﾌﾚｸﾀｰ" 
   export function photo_L_out( wb: whiteblack ,sikii:sence_select): boolean {
 　  if (sikii==sence_select.低感度)
     {
@@ -360,7 +360,7 @@ namespace eureka_blocks_car {
         break;
     }
   }
-  //% color="#6041f1"  weight=25 block="左右とも |%wb| をふんでいる時 しきい値 |%sikii| " group="4　センサー"
+  //% color="#6041f1"  weight=25 block="左右とも |%wb| をふんでいる時 しきい値 |%sikii| " group="4 ﾌｫﾄﾘﾌﾚｸﾀｰ"
   export function photo_LR_out(wb: whiteblack,sikii:sence_select): boolean {
 　  if (sikii==sence_select.低感度)
     {
@@ -400,7 +400,7 @@ namespace eureka_blocks_car {
 }
 
 
-  //% color="#009A00" weight=22 blockId=sonar_ping_2 block="きょりｾﾝｻ" group="4　センサー"
+  //% color="#009A00" weight=22 blockId=sonar_ping_2 block="きょりｾﾝｻ" group="3 超音波きょりｾﾝｻｰ"
   export function sonar_ping_2() :number{
     let  d1=0;
     let  d2=0;
@@ -422,7 +422,7 @@ namespace eureka_blocks_car {
   }
 
 
-  //% color="#009A00" weight=21 blockId=sonar_ping_LED block="きょりを表示する" group="4　センサー"
+  //% color="#009A00" weight=21 blockId=sonar_ping_LED block="きょりを表示する" group="3 超音波きょりｾﾝｻｰ"
   export function sonar_ping_LED() { 
     basic.showNumber(sonar_ping_2());
   }
@@ -432,7 +432,7 @@ namespace eureka_blocks_car {
 
 
 
-  //% color="#009A00" weight=20 block="きょりが |%limit| cmより |%nagasa| " group="4　センサー"
+  //% color="#009A00" weight=20 block="きょりが |%limit| cmより |%nagasa| " group="3 超音波きょりｾﾝｻｰ"
   //% limit.min=0 limit.max=30
   export function sonar_ping_3(limit: number ,nagasa:kyori): boolean {
     let  d1=0;
@@ -470,7 +470,7 @@ namespace eureka_blocks_car {
   }
 
 
-  //% color="#009A00"  weight=80 blockId=light_limit block="光ｾﾝｻ値が |%limit| より |%l_sel| " group="4　センサー"
+  //% color="#009A00"  weight=80 blockId=light_limit block="光ｾﾝｻ値が |%limit| より |%l_sel| " group="5 明るさｾﾝｻｰ"
   //% limit.min=0 limit.max=100
    export function light_limit( limit: number , l_sel:light_sensor): boolean{
     switch(l_sel) {
@@ -494,7 +494,7 @@ namespace eureka_blocks_car {
         }
    }
 
-  //% color="#009A00"  weight=81 blockId=eureka_light block="光ｾﾝｻの値を調べる" group="4　センサー"
+  //% color="#009A00"  weight=81 blockId=eureka_light block="光ｾﾝｻの値を調べる" group="5 明るさｾﾝｻｰ"
   export function eureka_light() {
         led.enable(false);
         let light = Math.round((pins.analogReadPin(AnalogPin.P4) / 1023) * 100);
@@ -502,7 +502,7 @@ namespace eureka_blocks_car {
         basic.showNumber(light);
     }
 
-  //% color="#ff3d03" weight=12 blockId=auto_led_off block="ﾏｲｸﾛﾋﾞｯﾄのLEDを |%Matrix_LED| にする"group="5　ライト"
+  //% color="#ff3d03" weight=12 blockId=auto_led_off block="ﾏｲｸﾛﾋﾞｯﾄのLEDを |%Matrix_LED| にする"group="6 ライト"
   export function auto_led_off(Matrix_LED:car_LED_onoff) {
     switch(Matrix_LED){
         case car_LED_onoff.無効:
@@ -512,7 +512,7 @@ namespace eureka_blocks_car {
         led.enable(true);
     }
   }
-  //% color="#40a6ff" weight=10 blockId=auto_white_LED block="前＿白LED |%mode| " group="5　ライト"
+  //% color="#40a6ff" weight=10 blockId=auto_white_LED block="前＿白LED |%mode| " group="6 ライト"
   export function white_LED(mode: onoff) {
     if (mode == onoff.ON) {
       pins.digitalWritePin(DigitalPin.P3, 1);
@@ -521,7 +521,7 @@ namespace eureka_blocks_car {
     }
   }
 
-  //% color="#ff4940" weight=8 blockId=auto_red_LED block="後ろ＿赤LED |%mode| " group="5　ライト"
+  //% color="#ff4940" weight=8 blockId=auto_red_LED block="後ろ＿赤LED |%mode| " group="6 ライト"
   export function red_LED(mode: onoff) {
     if (mode == onoff.ON) {
       pins.digitalWritePin(DigitalPin.P15, 1);
