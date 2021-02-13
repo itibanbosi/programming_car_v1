@@ -419,7 +419,7 @@ namespace eureka_blocks_car {
     d1 = pins.pulseIn(DigitalPin.P16, PulseValue.High, 500 * 58);
     d2=d2+d1;
     }
-    return Math.round(Math.idiv(d2/sonar_quality, 58) * 1.5) ;
+    return Math.round(Math.idiv(d2/10, 58) * 1.5) ;
   }
 
   //% color="#009A00" weight=20 block="きょりが |%limit| cmより |%nagasa| " group="4　センサー"
