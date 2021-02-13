@@ -402,7 +402,6 @@ namespace eureka_blocks_car {
 
   //% color="#009A00" weight=22 blockId=sonar_ping_2 block="きょりｾﾝｻ" group="4　センサー"
   export function ping(sonar_quality:sonar_avg) :number{
-    sonar_quality=10
     let  d1=0;
     let  d2=0;
 
