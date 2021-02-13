@@ -261,6 +261,74 @@ namespace eureka_blocks_car {
     basic.pause(second*1000);
   }
 
+  //% color="#009A00" weight=22 blockId=sonar_ping_2 block="きょりｾﾝｻ" group="3 超音波きょりｾﾝｻｰ"
+  export function sonar_ping_2() :number{
+    let  d1=0;
+    let  d2=0;
+
+    for ( let i=0 ; i<10 ; i++ ){
+    // send
+    basic.pause(5);
+    pins.setPull(DigitalPin.P16, PinPullMode.PullNone);
+    pins.digitalWritePin(DigitalPin.P8, 0);
+    control.waitMicros(2);
+    pins.digitalWritePin(DigitalPin.P8, 1);
+    control.waitMicros(10);
+    pins.digitalWritePin(DigitalPin.P8, 0);
+    // read
+    d1 = pins.pulseIn(DigitalPin.P16, PulseValue.High, 500 * 58);
+    d2=d2+d1;
+    }
+    return Math.round(Math.idiv(d2/10, 58) * 1.5) ;
+  }
+
+
+  //% color="#009A00" weight=21 blockId=sonar_ping_LED block="きょりを表示する" group="3 超音波きょりｾﾝｻｰ"
+  export function sonar_ping_LED() { 
+    basic.showNumber(sonar_ping_2());
+  }
+
+
+  
+
+
+
+  //% color="#009A00" weight=20 block="きょりが |%limit| cmより |%nagasa| " group="3 超音波きょりｾﾝｻｰ"
+  //% limit.min=0 limit.max=30
+  export function sonar_ping_3(limit: number ,nagasa:kyori): boolean {
+    let  d1=0;
+    let  d2=0;
+
+    for ( let i=0 ; i<10 ; i++ ){
+    // send
+    basic.pause(5);
+    pins.setPull(DigitalPin.P16, PinPullMode.PullNone);
+    pins.digitalWritePin(DigitalPin.P8, 0);
+    control.waitMicros(2);
+    pins.digitalWritePin(DigitalPin.P8, 1);
+    control.waitMicros(10);
+    pins.digitalWritePin(DigitalPin.P8, 0);
+    // read
+    d1 = pins.pulseIn(DigitalPin.P16, PulseValue.High, 500 * 58);
+    d2= d1+d2;
+    }
+    switch(nagasa){
+        case kyori.短い:
+        if (Math.idiv(d2/10, 58) * 1.5 < limit) {
+        return true;
+        } else {
+        return false;
+        }
+        break;
+        case kyori.長い:
+        if (Math.idiv(d2/10, 58) * 1.5 < limit) {
+        return false;
+        } else {
+        return true;
+        }
+        break;        
+    }
+  }
 
 
   //% color="#f071bd" weight=30 blockId=auto_photo_R block="右ﾌｫﾄﾘﾌﾚｸﾀｰ" group="4 ﾌｫﾄﾘﾌﾚｸﾀｰ"
@@ -400,74 +468,6 @@ namespace eureka_blocks_car {
 }
 
 
-  //% color="#009A00" weight=22 blockId=sonar_ping_2 block="きょりｾﾝｻ" group="3 超音波きょりｾﾝｻｰ"
-  export function sonar_ping_2() :number{
-    let  d1=0;
-    let  d2=0;
-
-    for ( let i=0 ; i<10 ; i++ ){
-    // send
-    basic.pause(5);
-    pins.setPull(DigitalPin.P16, PinPullMode.PullNone);
-    pins.digitalWritePin(DigitalPin.P8, 0);
-    control.waitMicros(2);
-    pins.digitalWritePin(DigitalPin.P8, 1);
-    control.waitMicros(10);
-    pins.digitalWritePin(DigitalPin.P8, 0);
-    // read
-    d1 = pins.pulseIn(DigitalPin.P16, PulseValue.High, 500 * 58);
-    d2=d2+d1;
-    }
-    return Math.round(Math.idiv(d2/10, 58) * 1.5) ;
-  }
-
-
-  //% color="#009A00" weight=21 blockId=sonar_ping_LED block="きょりを表示する" group="3 超音波きょりｾﾝｻｰ"
-  export function sonar_ping_LED() { 
-    basic.showNumber(sonar_ping_2());
-  }
-
-
-  
-
-
-
-  //% color="#009A00" weight=20 block="きょりが |%limit| cmより |%nagasa| " group="3 超音波きょりｾﾝｻｰ"
-  //% limit.min=0 limit.max=30
-  export function sonar_ping_3(limit: number ,nagasa:kyori): boolean {
-    let  d1=0;
-    let  d2=0;
-
-    for ( let i=0 ; i<10 ; i++ ){
-    // send
-    basic.pause(5);
-    pins.setPull(DigitalPin.P16, PinPullMode.PullNone);
-    pins.digitalWritePin(DigitalPin.P8, 0);
-    control.waitMicros(2);
-    pins.digitalWritePin(DigitalPin.P8, 1);
-    control.waitMicros(10);
-    pins.digitalWritePin(DigitalPin.P8, 0);
-    // read
-    d1 = pins.pulseIn(DigitalPin.P16, PulseValue.High, 500 * 58);
-    d2= d1+d2;
-    }
-    switch(nagasa){
-        case kyori.短い:
-        if (Math.idiv(d2/10, 58) * 1.5 < limit) {
-        return true;
-        } else {
-        return false;
-        }
-        break;
-        case kyori.長い:
-        if (Math.idiv(d2/10, 58) * 1.5 < limit) {
-        return false;
-        } else {
-        return true;
-        }
-        break;        
-    }
-  }
 
 
   //% color="#009A00"  weight=80 blockId=light_limit block="光ｾﾝｻ値が |%limit| より |%l_sel| " group="5 明るさｾﾝｻｰ"
