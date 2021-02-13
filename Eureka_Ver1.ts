@@ -406,9 +406,9 @@ namespace eureka_blocks_car {
     let  d1=0;
     let  d2=0;
 
-    for ( let i=0 ; i<sonar_quality ; i++ ){
+    for ( let i=0 ; i<10 ; i++ ){
     // send
-    basic.pause(20);
+    basic.pause(5);
     pins.setPull(DigitalPin.P16, PinPullMode.PullNone);
     pins.digitalWritePin(DigitalPin.P8, 0);
     control.waitMicros(2);
