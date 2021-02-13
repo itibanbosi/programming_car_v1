@@ -53,7 +53,7 @@ let con_le = 0;
 let con_op = 0;
 
 
-//% color="#3943c6" block="ﾕｰﾚｶ･ｶｰVer1.1" icon="\uf1b9"
+//% color="#3943c6" block="ﾕｰﾚｶ･ｶｰVer1.2" icon="\uf1b9"
 
 namespace eureka_blocks_car {
 /*
@@ -401,7 +401,7 @@ namespace eureka_blocks_car {
 
 
   //% color="#009A00" weight=22 blockId=sonar_ping_2 block="きょりｾﾝｻ" group="4　センサー"
-  export function ping_2() :number{
+  export function sonar_ping_2() :number{
     let  d1=0;
     let  d2=0;
 
@@ -420,6 +420,17 @@ namespace eureka_blocks_car {
     }
     return Math.round(Math.idiv(d2/10, 58) * 1.5) ;
   }
+
+
+  //% color="#009A00" weight=21 blockId=sonar_ping_LED block="きょりを表示する" group="4　センサー"
+  export function sonar_ping_LED() { 
+    basic.showNumber(sonar_ping_2());
+  }
+
+
+  
+
+
 
   //% color="#009A00" weight=20 block="きょりが |%limit| cmより |%nagasa| " group="4　センサー"
   //% limit.min=0 limit.max=30
