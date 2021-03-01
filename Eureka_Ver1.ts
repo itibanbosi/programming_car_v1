@@ -37,11 +37,19 @@ enum kyori{
     短い,
     長い,
 }
-enum sonar_avg{
-  低速高精度,
-  中速中精度,
-  高速低精度,
+
+enum SONER_avg {
+    //% block="1",
+    one,
+    //% block="2",
+    two,
+    //% block="10",
+    ten,
 }
+
+
+
+
 
 enum light_sensor{
     暗い,
@@ -261,12 +269,12 @@ namespace eureka_blocks_car {
     basic.pause(second*1000);
   }
 
-  //% color="#009A00" weight=22 blockId=sonar_ping_2 block="きょりｾﾝｻ" group="3 超音波きょりｾﾝｻｰ"
-  export function sonar_ping_2() :number{
+  //% color="#009A00" weight=22 blockId=sonar_ping_2 block="きょりｾﾝｻ 平均回数|%heikin|" group="3 超音波きょりｾﾝｻｰ"
+  export function sonar_ping_2(heikin:SONER_avg) :number{
     let  d1=0;
     let  d2=0;
 
-    for ( let i=0 ; i<10 ; i++ ){
+    for ( let i=0 ; i<heikin ; i++ ){
     // send
     basic.pause(5);
     pins.setPull(DigitalPin.P16, PinPullMode.PullNone);
@@ -285,7 +293,7 @@ namespace eureka_blocks_car {
 
   //% color="#009A00" weight=21 blockId=sonar_ping_LED block="きょりを表示する" group="3 超音波きょりｾﾝｻｰ"
   export function sonar_ping_LED() { 
-    basic.showNumber(sonar_ping_2());
+    basic.showNumber(sonar_ping_2(1));
   }
 
 
