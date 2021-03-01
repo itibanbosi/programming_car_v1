@@ -287,7 +287,7 @@ namespace eureka_blocks_car {
     d1 = pins.pulseIn(DigitalPin.P16, PulseValue.High, 500 * 58);
     d2=d2+d1;
     }
-    return Math.round(Math.idiv(d2/10, 58) * 1.5) ;
+    return Math.round(Math.idiv(d2/heikin, 58) * 1.5) ;
   }
 
 
@@ -301,13 +301,13 @@ namespace eureka_blocks_car {
 
 
 
-  //% color="#009A00" weight=20 block="きょりが |%limit| cmより |%nagasa| " group="3 超音波きょりｾﾝｻｰ"
+  //% color="#009A00" weight=20 block="きょりが|%limit|cmより|%nagasa| 平均回数|%heikin|" group="3 超音波きょりｾﾝｻｰ"
   //% limit.min=0 limit.max=30
-  export function sonar_ping_3(limit: number ,nagasa:kyori): boolean {
+  export function sonar_ping_3(limit: number ,nagasa:kyori,heikin:SONER_avg): boolean {
     let  d1=0;
     let  d2=0;
 
-    for ( let i=0 ; i<10 ; i++ ){
+    for ( let i=0 ; i<heikin ; i++ ){
     // send
     basic.pause(5);
     pins.setPull(DigitalPin.P16, PinPullMode.PullNone);
@@ -322,14 +322,14 @@ namespace eureka_blocks_car {
     }
     switch(nagasa){
         case kyori.短い:
-        if (Math.idiv(d2/10, 58) * 1.5 < limit) {
+        if (Math.idiv(d2/heikin, 58) * 1.5 < limit) {
         return true;
         } else {
         return false;
         }
         break;
         case kyori.長い:
-        if (Math.idiv(d2/10, 58) * 1.5 < limit) {
+        if (Math.idiv(d2/heikin, 58) * 1.5 < limit) {
         return false;
         } else {
         return true;
