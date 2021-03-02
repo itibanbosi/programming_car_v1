@@ -37,19 +37,11 @@ enum kyori{
     短い,
     長い,
 }
-
-enum SONER_avg {
-    //% block="1",
-    one,
-    //% block="2",
-    two,
-    //% block="10",
-    ten,
+enum sonar_avg{
+  低速高精度,
+  中速中精度,
+  高速低精度,
 }
-
-
-
-
 
 enum light_sensor{
     暗い,
@@ -269,12 +261,12 @@ namespace eureka_blocks_car {
     basic.pause(second*1000);
   }
 
-  //% color="#009A00" weight=22 blockId=sonar_ping_2 block="きょりｾﾝｻ 平均回数|%heikin|" group="3 超音波きょりｾﾝｻｰ"
-  export function sonar_ping_2(heikin:SONER_avg) :number{
+  //% color="#009A00" weight=22 blockId=sonar_ping_2 block="きょりｾﾝｻ" group="3 超音波きょりｾﾝｻｰ"
+  export function sonar_ping_2() :number{
     let  d1=0;
     let  d2=0;
 
-    for ( let i=0 ; i<1 ; i++ ){
+    for ( let i=0 ; i<2 ; i++ ){
     // send
     basic.pause(5);
     pins.setPull(DigitalPin.P16, PinPullMode.PullNone);
@@ -287,13 +279,13 @@ namespace eureka_blocks_car {
     d1 = pins.pulseIn(DigitalPin.P16, PulseValue.High, 500 * 58);
     d2=d2+d1;
     }
-    return Math.round(Math.idiv(d2/1, 58) * 1.5) ;
+    return Math.round(Math.idiv(d2/2, 58) * 1.5) ;
   }
 
 
   //% color="#009A00" weight=21 blockId=sonar_ping_LED block="きょりを表示する" group="3 超音波きょりｾﾝｻｰ"
   export function sonar_ping_LED() { 
-    basic.showNumber(sonar_ping_2(1));
+    basic.showNumber(sonar_ping_2());
   }
 
 
@@ -301,13 +293,13 @@ namespace eureka_blocks_car {
 
 
 
-  //% color="#009A00" weight=20 block="きょりが|%limit|cmより|%nagasa| 平均回数|%heikin|" group="3 超音波きょりｾﾝｻｰ"
+  //% color="#009A00" weight=20 block="きょりが |%limit| cmより |%nagasa| " group="3 超音波きょりｾﾝｻｰ"
   //% limit.min=0 limit.max=30
-  export function sonar_ping_3(limit: number ,nagasa:kyori,heikin:SONER_avg): boolean {
+  export function sonar_ping_3(limit: number ,nagasa:kyori): boolean {
     let  d1=0;
     let  d2=0;
 
-    for ( let i=0 ; i<1 ; i++ ){
+    for ( let i=0 ; i<2 ; i++ ){
     // send
     basic.pause(5);
     pins.setPull(DigitalPin.P16, PinPullMode.PullNone);
@@ -322,14 +314,14 @@ namespace eureka_blocks_car {
     }
     switch(nagasa){
         case kyori.短い:
-        if (Math.idiv(d2/1, 58) * 1.5 < limit) {
+        if (Math.idiv(d2/2, 58) * 1.5 < limit) {
         return true;
         } else {
         return false;
         }
         break;
         case kyori.長い:
-        if (Math.idiv(d2/1, 58) * 1.5 < limit) {
+        if (Math.idiv(d2/2, 58) * 1.5 < limit) {
         return false;
         } else {
         return true;
@@ -538,3 +530,4 @@ namespace eureka_blocks_car {
     }
   }
 }
+
