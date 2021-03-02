@@ -53,7 +53,7 @@ let con_le = 0;
 let con_op = 0;
 
 
-//% color="#3943c6" block="ﾕｰﾚｶ･ｶｰVer1.2" icon="\uf1b9"
+//% color="#3943c6" block="ﾕｰﾚｶ･ｶｰVer1.3" icon="\uf1b9"
 
 namespace eureka_blocks_car {
 /*
